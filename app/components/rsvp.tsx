@@ -41,6 +41,7 @@ export default function Rsvp() {
                   action="/thanks/"
                   onSubmit={handleSubmit}
                 >
+                  <input name="form-name" value="Test Form" type="hidden" />
                   <div className="w-full sm:max-w-xs">
                     <label htmlFor="name" className="sr-only">
                       Email

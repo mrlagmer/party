@@ -10,11 +10,14 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
 
   const name = formData.get("name");
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  }).then(() => console.log("Form successfully submitted"));
+  fetch(
+    "https://script.google.com/macros/s/AKfycbz4ciZFzFUj8Pex6m3YdPlhF1mJEvrV2sKZZA7YFdHMV6Rao0-OwzJYPNYfjx7FvIpN/exec",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    }
+  ).then(() => console.log("Form successfully submitted"));
   return redirect("/thanks");
 };
 

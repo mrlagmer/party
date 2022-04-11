@@ -1,8 +1,6 @@
 [build]
   command = "remix build"
-  functions = "netlify/functions"
-  publish = "public/build/"
-
+  publish = "public"
 
 [dev]
   command = "remix watch"
@@ -12,9 +10,6 @@
   from = "/*"
   to = "/.netlify/functions/server"
   status = 200
-
-[context.production]
-  publish = "build/"
 
 [[headers]]
   for = "/build/*"

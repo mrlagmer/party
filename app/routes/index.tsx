@@ -15,9 +15,11 @@ export const action = async ({ request }) => {
     body: new URLSearchParams(formData).toString(),
   })
     .then(() => {
-      window.location.href = "/thanks/";
+      console.log("submitted");
     })
     .catch((error) => alert(error));
+
+  return redirect("/thanks");
 };
 
 export default function Index() {

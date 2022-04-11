@@ -10,7 +10,11 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
 
   const name = formData.get("name");
-
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString(),
+  }).then(() => console.log("Form successfully submitted"));
   return redirect("/thanks");
 };
 

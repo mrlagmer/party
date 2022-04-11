@@ -21,6 +21,7 @@ export default function Rsvp() {
                   name="rsvp"
                   method="post"
                   data-netlify="true"
+                  netlify
                 >
                   <div className="w-full sm:max-w-xs">
                     <label htmlFor="name" className="sr-only">

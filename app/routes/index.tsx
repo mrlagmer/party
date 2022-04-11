@@ -1,26 +1,8 @@
-import { redirect } from "@remix-run/node";
-
 import Hero from "../components/hero";
 import Cocktail from "~/components/cocktail";
 import Karaoke from "~/components/karaoke";
 import Details from "~/components/details";
 import Rsvp from "~/components/rsvp";
-
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-
-  fetch("/favicon.ico", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  })
-    .then(() => {
-      console.log("submitted");
-    })
-    .catch((error) => alert(error));
-
-  return redirect("/thanks");
-};
 
 export default function Index() {
   return (

@@ -1,7 +1,24 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Form } from "@remix-run/react";
 
 export default function Rsvp() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const data = new FormData(form);
+
+    // Netlify will accept form submissions to any valid URL
+    // by submitting to a static file we skip Remix's POST catcher
+    fetch("/favicon.ico", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        window.location.href = "/thanks/";
+      })
+      .catch((error) => alert(error));
+  };
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -16,12 +33,13 @@ export default function Rsvp() {
                   Enter your name + the name of some other fool who want in
                 </h3>
 
-                <Form
+                <form
                   className="mt-5 sm:flex sm:items-center"
-                  name="rsvp"
                   method="post"
+                  name="Test Form"
                   data-netlify="true"
-                  netlify
+                  action="/thanks/"
+                  onSubmit={handleSubmit}
                 >
                   <div className="w-full sm:max-w-xs">
                     <label htmlFor="name" className="sr-only">
@@ -41,7 +59,7 @@ export default function Rsvp() {
                   >
                     RSVP to Party!
                   </button>
-                </Form>
+                </form>
               </div>
             </div>
           </div>

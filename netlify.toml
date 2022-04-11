@@ -13,6 +13,9 @@
   to = "/.netlify/functions/server"
   status = 200
 
+[context.production]
+  publish = "build/"
+
 [[headers]]
   for = "/build/*"
   [headers.values]
